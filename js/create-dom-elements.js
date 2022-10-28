@@ -18,6 +18,8 @@ const createCase = () => {
     descr: todoInput.value
   }
 
+  test
+
   const createItem = {id, tag, childTag, descr} = caseItem => {
     const id = id;
     const todoCase = document.createElement(tag);
