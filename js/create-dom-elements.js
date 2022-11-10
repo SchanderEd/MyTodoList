@@ -1,47 +1,31 @@
 import { todoList, todoInput } from './dom-elements.js';
-import { clearInput, createId } from './util.js';
-//import {caseObj} from './caseObj.js';
+import { clearInput } from './util.js';
 
 let todoCase = '';
 let deleteBtn = '';
 
-let cases = [];
-
 const createCase = () => {
-  const todoCase = document.createElement('li');
-  const todoDescription = document.createElement('p');
 
-  const caseItem = {
-    id: createId(),
-    tag: 'li',
-    childTag: 'p',
-    descr: todoInput.value
-  }
+  const createCaseItem = document.createElement('li');
+  createCaseItem.classList.add('case');
 
-  test
+  const createDescr = document.createElement('p');
+  createDescr.innerHTML = todoInput.value;
 
-  const createItem = {id, tag, childTag, descr} = caseItem => {
-    const id = id;
-    const todoCase = document.createElement(tag);
-    const todoDescription = document.createElement(childTag);
-    todoCase.appendChild(todoDescription);
-    todoDescription.innerHTML = descr;
-  }
-
-  deleteBtn = document.createElement('button');
-  deleteBtn.setAttribute('id', caseItem.id)
-  deleteBtn.innerHTML = 'Сделано';
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerHTML = 'Удалить';
   deleteBtn.classList.add('delete');
 
-  todoDescription.innerHTML = caseItem.descr;
-  todoCase.setAttribute('id', caseItem.id);
-  todoCase.appendChild(todoDescription);
-  todoCase.appendChild(deleteBtn);
-  todoList.appendChild(todoCase);
+  const doneBtn = document.createElement('button');
+  doneBtn.innerHTML = 'Сделано'
+  doneBtn.classList.add('done');
 
-  cases.push(caseItem);
+  todoList.appendChild(createCaseItem);
+  createCaseItem.appendChild(createDescr);
+  createCaseItem.appendChild(deleteBtn);
+  createCaseItem.appendChild(doneBtn);
+
   clearInput();
-  return cases, todoCase //deleteBtn,todoCase;
 };
 
-export { createCase, todoCase, deleteBtn, cases };
+export { createCase, todoCase, deleteBtn };
